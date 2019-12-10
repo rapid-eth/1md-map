@@ -45,8 +45,8 @@ export const useEventsData = () => {
         .then(response => response.json())
         .then(data => {
           const filteredData = data.filter((event) => !!event.venue)
-            .map(({ name, venue, link }) => {
-              return { name, coordinates: [venue.lon, venue.lat], lat: venue.lat, lon: venue.lon, link }
+            .map(({ name, venue, link, ...rest }) => {
+              return { name, coordinates: [venue.lon, venue.lat], lat: venue.lat, lon: venue.lon, link, ...rest }
             })
           setData(filteredData)
         });

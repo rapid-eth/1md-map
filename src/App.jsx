@@ -11,7 +11,7 @@ const { REACT_APP_MAPBOX_ACCESS_TOKEN } = process.env
 const App = () => {
   const viewport = useLocation();
   const eventsData = useEventsData();
-  const [hover, setHover] = useState({ hoveredObject: undefined, pointerX: undefined, pointerY: undefined })
+  const [hover, setHover] = useState()
 
   const renderTooltip = () => {
     const { hoveredObject, pointerX, pointerY } = hover || {};
@@ -19,6 +19,7 @@ const App = () => {
       <div className={'hover'} style={{left: pointerX, top: pointerY}}>
         <h4>{hoveredObject.name}</h4>
         <p>{hoveredObject.link}</p>
+        {/* <p dangerouslySetInnerHTML={{__html: hoveredObject.description}} /> */}
       </div>
     );
   }
