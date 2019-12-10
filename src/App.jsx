@@ -5,8 +5,9 @@ import { StaticMap } from 'react-map-gl';
 import { useLocation, useEventsData } from './hooks';
 import ErrorBoundary from './ErrorBoundary';
 
-const { REACT_APP_MAPBOX_ACCESS_TOKEN } = process.env
+import 'mapbox-gl/src/css/mapbox-gl.css';
 
+const { REACT_APP_MAPBOX_ACCESS_TOKEN } = process.env
 
 const App = () => {
   const viewport = useLocation();
@@ -16,10 +17,10 @@ const App = () => {
   const renderTooltip = () => {
     const { hoveredObject, pointerX, pointerY } = hover || {};
     return hoveredObject && (
-      <div className={'hover'} style={{left: pointerX, top: pointerY}}>
-        <h4>{hoveredObject.name}</h4>
-        <p>{hoveredObject.link}</p>
-        {/* <p dangerouslySetInnerHTML={{__html: hoveredObject.description}} /> */}
+      <div className={'hover'} style={{ left: pointerX, top: pointerY }}>
+        <h5>{hoveredObject.name}</h5>
+        <h6><a href={hoveredObject.link}>{hoveredObject.link}</a></h6>
+        <p dangerouslySetInnerHTML={{__html: hoveredObject.description}} />
       </div>
     );
   }
@@ -80,7 +81,7 @@ const App = () => {
               <StaticMap mapboxApiAccessToken={REACT_APP_MAPBOX_ACCESS_TOKEN} reuseMaps preventStyleDiffing />
               {renderTooltip()}
             </DeckGL>
-          )}
+        )}
         </div>
 
       </div>

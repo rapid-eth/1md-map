@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 code {
@@ -36,4 +37,5 @@ code {
   background: rgba(0,0,0,.5);
   padding: .3rem 1rem 1rem 1rem;
   border-radius: 1rem;
+  overflow: hidden;
 }
