@@ -26,3 +26,12 @@ code {
   display: flex;
   flex-basis: 65%
 }
+
+.hover {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  background: rgba(0,0,0,.8);
+  padding: .3rem 1rem 1rem 1rem;
+  border-radius: 1rem; 
+}
