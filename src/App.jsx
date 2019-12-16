@@ -4,6 +4,7 @@ import { ScatterplotLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
 import { useLocation, useEventsData } from './hooks';
 import ErrorBoundary from './ErrorBoundary';
+import { getRandomSubarray } from './utils';
 
 import 'mapbox-gl/src/css/mapbox-gl.css';
 
@@ -13,17 +14,6 @@ const App = () => {
   const viewport = useLocation();
   const eventsData = useEventsData();
   const [hover, setHover] = useState()
-
-  const renderTooltip = () => {
-    const { hoveredObject, pointerX, pointerY } = hover || {};
-    return hoveredObject && (
-      <div className={'hover'} style={{ left: pointerX, top: pointerY }}>
-        <h5>{hoveredObject.name}</h5>
-        <h6><a href={hoveredObject.link}>{hoveredObject.link}</a></h6>
-        <p dangerouslySetInnerHTML={{__html: hoveredObject.description}} />
-      </div>
-    );
-  }
 
   const layer = new ScatterplotLayer({
     id: 'scatterplot-layer',
@@ -57,19 +47,30 @@ const App = () => {
     }
   });
 
+  const renderTooltip = () => {
+    const { hoveredObject, pointerX, pointerY } = hover || {};
+    return hoveredObject && (
+      <div className={'hover'} style={{ left: pointerX, top: pointerY }}>
+        <h5>{hoveredObject.name}</h5>
+        <h6><a href={hoveredObject.link}>{hoveredObject.link}</a></h6>
+        <p dangerouslySetInnerHTML={{__html: hoveredObject.description}} />
+      </div>
+    );
+  }
 
   return (
     <ErrorBoundary>
       <div className="parent">
         <div className="leftChild">
-          {/* {
-            getRandomSubarray(eventsData, 4).map((item, index) => 
+          <h3>Upcoming Events Near You</h3>
+          {
+            eventsData && getRandomSubarray(eventsData, 4).map((item, index) => 
               <div key={index}>
                 <h4>{item.name}</h4>
-                <a href={item.link}>more info</a>
+                <a target="_new" href={item.link}>more info</a>
               </div>
             )
-          } */}
+          }
         </div>
         <div className="rightChild">
           {viewport && (

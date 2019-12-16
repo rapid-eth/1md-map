@@ -21,11 +21,14 @@ code {
 .leftChild {
   display: flex;
   flex-direction: column;
-  flex-basis: 35%
+  flex-basis: 35%;
+  padding: 1rem;
 }
+
 .rightChild {
   display: flex;
-  flex-basis: 65%
+  flex-basis: 65%;
+  position: relative;
 }
 
 .hover {
