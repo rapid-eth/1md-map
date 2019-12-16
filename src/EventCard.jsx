@@ -1,10 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles({
   card: {
@@ -31,21 +33,25 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SimpleCard({name, link}) {
+export default function SimpleCard({event, close}) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
+      <CardHeader
+        action={
+          <IconButton aria-label="close" onClick={close}>
+            <CloseIcon />
+          </IconButton>
+        }
+        title={event.name}
+        subheader={<Link href={event.link} target="_new" rel="noopener noreferrer">Meetup Page</Link>}
+      />
+      
       <CardContent>
-        <Typography gutterBottom>
-          {name}
+        <Typography gutterBottom dangerouslySetInnerHTML={{__html: event.description}}>
         </Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button variant="contained" size="small" href={link} target="_blank" className={classes.button}>
-          Learn more
-        </Button>
-      </CardActions>
     </Card>
   );
 }

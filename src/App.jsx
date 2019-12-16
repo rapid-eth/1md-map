@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DeckGL from '@deck.gl/react';
 import { ScatterplotLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
 import Typography from '@material-ui/core/Typography';
+import EventCard from './EventCard';
 import Card from './Card';
 import { useLocation, useEventsData } from './hooks';
 import ErrorBoundary from './ErrorBoundary';
-import { getRandomSubarray } from './utils';
+import { getRandomSubarray, distanceMeters } from './utils';
 
 import 'mapbox-gl/src/css/mapbox-gl.css';
 
@@ -16,6 +17,20 @@ const App = () => {
   const viewport = useLocation();
   const eventsData = useEventsData();
   const [hover, setHover] = useState()
+  const [clickedEvent, setClickedEvent] = useState(undefined);
+  const [nearYou, setNearYou] = useState([]);
+  
+  useEffect(() => {
+    const distances = eventsData && eventsData.map((e) =>  {
+      const dist = viewport && distanceMeters(viewport.latitude, viewport.longitude, e.lat, e.lon)
+      return { ...e, distanceToMe: dist}
+    })
+    if (distances) {
+      distances.sort((a, b) => a.distanceToMe - b.distanceToMe);
+      setNearYou(distances.slice(0, 4))
+    }
+  }, [viewport, eventsData])
+
 
   const layer = new ScatterplotLayer({
     id: 'scatterplot-layer',
@@ -46,7 +61,8 @@ const App = () => {
           pointerY: undefined
         })
       }
-    }
+    },
+    onClick: ({ object }) => {setClickedEvent(object)},
   });
 
   const renderTooltip = () => {
@@ -55,7 +71,6 @@ const App = () => {
       <div className={'hover'} style={{ left: pointerX, top: pointerY }}>
         <h5>{hoveredObject.name}</h5>
         <h6><a href={hoveredObject.link}>{hoveredObject.link}</a></h6>
-        <p dangerouslySetInnerHTML={{__html: hoveredObject.description}} />
       </div>
     );
   }
@@ -64,16 +79,17 @@ const App = () => {
     <ErrorBoundary>
       <div className="parent">
         <div className="leftChild">
-          <Typography variant="h6" style={{textAlign: 'center'}}>Upcoming Events Near You</Typography>
-          
-          {
-            eventsData && getRandomSubarray(eventsData, 4).map((item, index) => 
-              <Card key={index} name={item.name} link={item.link} />
-              // <div key={index}>
-              //   <h4>{item.name}</h4>
-              //   <a target="_new" href={item.link}>more info</a>
-              // </div>
-            )
+          {clickedEvent 
+          ? <EventCard event={clickedEvent} close={() => setClickedEvent(undefined)} /> 
+          :
+            <div>
+              <Typography variant="h6" style={{textAlign: 'center'}}>Upcoming Events Near You</Typography>
+              {
+                nearYou.map((item, index) => 
+                  <Card key={index} name={item.name} link={item.link} />
+                )
+              }
+              </div>
           }
         </div>
         <div className="rightChild">
