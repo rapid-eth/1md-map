@@ -7,7 +7,7 @@ import EventCard from './EventCard';
 import Card from './Card';
 import { useLocation, useEventsData } from './hooks';
 import ErrorBoundary from './ErrorBoundary';
-import { getRandomSubarray, distanceMeters } from './utils';
+import { distanceMeters } from './utils';
 
 import 'mapbox-gl/src/css/mapbox-gl.css';
 

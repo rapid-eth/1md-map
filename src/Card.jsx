@@ -10,7 +10,6 @@ const useStyles = makeStyles({
   card: {
     minWidth: 275,
     marginBottom: 15,
-    // backgroundColor: 'lightgray'
   },
   bullet: {
     display: 'inline-block',
@@ -26,9 +25,6 @@ const useStyles = makeStyles({
   cardActions: {
     flexDirection: 'row-reverse'
   },
-  button: {
-    // backgroundColor: 'rgb(131, 0, 233)'
-  }
 });
 
 export default function SimpleCard({name, link}) {
@@ -42,7 +38,7 @@ export default function SimpleCard({name, link}) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button variant="contained" size="small" href={link} target="_blank" className={classes.button}>
+        <Button variant="contained" size="small" href={link} target="_blank">
           Learn more
         </Button>
       </CardActions>

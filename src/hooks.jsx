@@ -21,7 +21,7 @@ export const useLocation = () => {
         .then(response => response.json())
         .then(data => {
           const { ll } = data;
-          setViewport(() => { return { latitude: ll[0], longitude: ll[1], zoom: 3 } });
+          setViewport(() => { return { latitude: ll[0], longitude: ll[1], zoom: 2 } });
         });
     };
     fetchPos();
