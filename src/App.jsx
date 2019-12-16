@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import DeckGL from '@deck.gl/react';
 import { ScatterplotLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
+import Typography from '@material-ui/core/Typography';
+import Card from './Card';
 import { useLocation, useEventsData } from './hooks';
 import ErrorBoundary from './ErrorBoundary';
 import { getRandomSubarray } from './utils';
@@ -62,13 +64,15 @@ const App = () => {
     <ErrorBoundary>
       <div className="parent">
         <div className="leftChild">
-          <h3>Upcoming Events Near You</h3>
+          <Typography variant="h6" style={{textAlign: 'center'}}>Upcoming Events Near You</Typography>
+          
           {
             eventsData && getRandomSubarray(eventsData, 4).map((item, index) => 
-              <div key={index}>
-                <h4>{item.name}</h4>
-                <a target="_new" href={item.link}>more info</a>
-              </div>
+              <Card key={index} name={item.name} link={item.link} />
+              // <div key={index}>
+              //   <h4>{item.name}</h4>
+              //   <a target="_new" href={item.link}>more info</a>
+              // </div>
             )
           }
         </div>
