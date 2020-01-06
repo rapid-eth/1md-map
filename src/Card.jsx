@@ -37,11 +37,6 @@ const cardStyle = makeStyles({
     backgroundColor: "white",
     color: "black"
   },
-  overridesUnderline: {
-    '&:hover': {
-      color: 'white'
-    }
-  },
 });
 
 export default function SimpleCard({ name, link }) {
@@ -56,7 +51,6 @@ export default function SimpleCard({ name, link }) {
         <Button
           className={clsx(cardWork.button, cardWork.overridesUnderline)}
           variant="contained"
-          // color="primary"
           size="small"
           href={link}
           target="_blank"
