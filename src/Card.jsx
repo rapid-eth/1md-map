@@ -27,13 +27,14 @@ const useStyles = makeStyles({
 
 const cardStyle = makeStyles({
   card: {
-    color: "black",
-    border: "1px solid grey",
+    color: "white",
     marginTop: 15,
-    border: "5px solid lightgrey"
+    border: "2px solid white",
+    backgroundColor: "rgba(0, 0, 0, 0.1)"
   },
   button: {
-    backgroundColor: "#721BE2"
+    backgroundColor: "white",
+    color: "black"
   }
 });
 

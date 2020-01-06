@@ -16,6 +16,7 @@ code {
 .parent {
   display: flex;
   flex-direction: row;
+  background-color: #8902ff;
 }
 
 .leftChild {
@@ -24,12 +25,14 @@ code {
   flex-basis: 35%;
   padding: 1rem;
   height: 100%;
+  border: 5px solid white;
 }
 
 .rightChild {
   display: flex;
   flex-basis: 65%;
   position: relative;
+  border: 5px solid white;
 }
 
 .hover {
@@ -37,7 +40,7 @@ code {
   z-index: 100;
   pointer-events: none;
   max-height: 300px;
-  max-width: 550px;
+  max-width: 400px;
   background: rgba(0, 0, 0, 0.7);
   color: lightgray;
   padding: 0.3rem 1rem 1rem 1rem;
