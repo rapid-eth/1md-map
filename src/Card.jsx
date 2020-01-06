@@ -22,9 +22,7 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12
   },
-  cardActions: {
-    flexDirection: "row-reverse"
-  }
+  cardActions: {}
 });
 
 const cardStyle = makeStyles({
@@ -32,11 +30,10 @@ const cardStyle = makeStyles({
     color: "black",
     border: "1px solid grey",
     marginTop: 15,
-    boxShadow: 10
+    border: "5px solid lightgrey"
   },
   button: {
-    backgroundColor: "red",
-    border: "5px solid grey"
+    backgroundColor: "#721BE2"
   }
 });
 
@@ -57,7 +54,7 @@ export default function SimpleCard({ name, link }) {
           href={link}
           target="_blank"
         >
-          Learn more
+          details
         </Button>
       </CardActions>
     </Card>
