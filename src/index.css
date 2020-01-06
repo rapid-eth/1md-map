@@ -46,6 +46,7 @@ code {
   padding: 0.3rem 1rem 1rem 1rem;
   border-radius: 1rem;
   overflow: hidden;
+  position: fixed;
 }
 .hover a {
   color: lightskyblue;

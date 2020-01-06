@@ -49,7 +49,6 @@ export default function SimpleCard({ event, close }) {
       />
 
       <CardContent>
-        hi
         <Typography
           gutterBottom
           dangerouslySetInnerHTML={{ __html: event.description }}
