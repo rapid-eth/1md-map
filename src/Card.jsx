@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -35,22 +36,27 @@ const cardStyle = makeStyles({
   button: {
     backgroundColor: "white",
     color: "black"
-  }
+  },
+  overridesUnderline: {
+    '&:hover': {
+      color: 'white'
+    }
+  },
 });
 
 export default function SimpleCard({ name, link }) {
   const classes = useStyles();
   const cardWork = cardStyle();
   return (
-    <Card className={(classes.card, cardWork.card)}>
+    <Card className={clsx(classes.card, cardWork.card)}>
       <CardContent>
         <Typography gutterBottom>{name}</Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button
-          className={cardWork.button}
+          className={clsx(cardWork.button, cardWork.overridesUnderline)}
           variant="contained"
-          color="primary"
+          // color="primary"
           size="small"
           href={link}
           target="_blank"
