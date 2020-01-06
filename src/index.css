@@ -16,7 +16,7 @@ code {
 .parent {
   display: flex;
   flex-direction: row;
-  background-color: #8902ff;
+  background-color: #6301b3;
 }
 
 .leftChild {
