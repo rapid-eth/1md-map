@@ -30,13 +30,20 @@ const cardStyle = makeStyles({
   card: {
     color: "white",
     marginTop: 15,
-    border: "2px solid white",
-    backgroundColor: "rgba(0, 0, 0, 0.1)"
+    border: "1px solid white",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    boxShadow: "3px 3px rgba(255, 255, 255, 0.1)"
   },
   button: {
-    backgroundColor: "white",
-    color: "black"
-  },
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    color: "white",
+    letterSpacing: ".15rem",
+    border: ".5px solid white",
+
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.5)"
+    }
+  }
 });
 
 export default function SimpleCard({ name, link }) {

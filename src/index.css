@@ -5,16 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .parent {
   display: flex;
   flex-direction: row;
-  background-color: #6301b3;
+  background-color: rgba(0, 128, 128, 0.8);
 }
 
 .leftChild {
@@ -23,14 +25,12 @@ code {
   flex-basis: 35%;
   padding: 1rem;
   height: 100%;
-  border: 5px solid white;
 }
 
 .rightChild {
   display: flex;
   flex-basis: 65%;
   position: relative;
-  border: 5px solid white;
 }
 
 .hover {
@@ -46,7 +46,6 @@ code {
   overflow: hidden;
   position: fixed;
 }
-
 .hover a {
   color: lightskyblue;
 }
