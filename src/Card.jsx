@@ -38,7 +38,11 @@ const cardStyle = makeStyles({
     backgroundColor: "rgba(0, 0, 0, 0.1)",
     color: "white",
     letterSpacing: ".15rem",
-    border: ".5px solid white"
+    border: ".5px solid white",
+
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.5)"
+    }
   }
 });
 
