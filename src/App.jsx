@@ -95,16 +95,6 @@ const App = () => {
             />
           ) : (
             <div>
-              <Typography
-                variant="h5"
-                style={{
-                  textAlign: "center",
-                  textDecoration: "underline",
-                  color: "white"
-                }}
-              >
-                Upcoming Events Near You
-              </Typography>
               {nearYou.map((item, index) => (
                 <Card key={index} name={item.name} link={item.link} />
               ))}
